@@ -4,7 +4,7 @@ const router = express.Router()
 const { Pokemon, Type, pokemon_type} = require("../db")
 const axios = require("axios")
 const {v4: uuidv4} = require('uuid');
-
+//TODO revisar para pasar las funciones y solo dejar las rutas
 //router.use(express.json())
 //* TRAIGO LOS 40 POKEMON DE LA API 
 const getApiInfo = async () => {
