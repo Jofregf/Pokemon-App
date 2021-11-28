@@ -6,6 +6,7 @@ const axios = require("axios")
 const {v4: uuidv4} = require('uuid');
 //TODO revisar para pasar las funciones y solo dejar las rutas en este archivo!!!!
 //router.use(express.json())
+
 //* TRAIGO LOS 40 POKEMON DE LA API 
 const getApiInfo = async () => {
     let apiUrl = (await axios.get('https://pokeapi.co/api/v2/pokemon?limit=40')).data.results
@@ -57,15 +58,15 @@ const getAllPokemon = async () => {
 
 }
 //* TRAIGO TODOS LOS POKEMON TANTO DE API COMO DE BASE DE DATOS
-router.get('/', async (req, res, next) => {
-    try {
-        const allPoke = await getAllPokemon();
-        res.send (allPoke);
-    } 
-    catch (error) {
-        next();
-    }
-})
+// router.get('/', async (req, res, next) => {
+//     try {
+//         const allPoke = await getAllPokemon();
+//         res.send (allPoke);
+//     } 
+//     catch (error) {
+//         next();
+//     }
+// })
 
 //*PARA RELACIONAR LAS TABLAS DE ID POKEMON Y ID DE TYPE
 router.post('/:pokemonId/type/:typeId', async (req, res, next) => {
@@ -80,8 +81,9 @@ router.post('/:pokemonId/type/:typeId', async (req, res, next) => {
     }       
 });
 
-//* TRAER LOS POKEMON CUYO ID ME PASEN X PARAMS
-router.get('/id/:id', async (req, res, next) => {
+
+
+router.get('/:id', async (req, res, next) => {
     const {id} = req.params
     let pokeId;
    
@@ -136,10 +138,10 @@ router.get('/id/:id', async (req, res, next) => {
         }
 })
 
-router.get('/name/:name', async(req,res)=>{
-    const {name}= req.params;
+router.get('/', async(req,res)=>{
+    const {name}= req.query
     try {
-
+        
         if (name) {
             const pokeBd = await Pokemon.findAll({
                 where: {
@@ -153,58 +155,57 @@ router.get('/name/:name', async(req,res)=>{
                 let respBd = pokeBd.map(p => {
                     return {
                         id: p.id,
-                    name: p.name,
-                    types: p.types.map(t => t.name),
-                    image: p.image,
-                    hp: p.hp,
-                    attack: p.attack,
-                    defense: p.defense,
-                    speed: p.speed,
-                    height: p.height,
-                    weight: p.weight
-                    
-                }
-            })
+                        name: p.name,
+                        types: p.types.map(t => t.name),
+                        image: p.image,
+                        hp: p.hp,
+                        attack: p.attack,
+                        defense: p.defense,
+                        speed: p.speed,
+                        height: p.height,
+                        weight: p.weight
+                    }
+                })
             res.status(200).send(respBd)
+            }
+            else {
+                const pokeApi = (await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`))
+                let respApi = [
+                    {
+                        id: pokeApi.data.id,
+                        name: pokeApi.data.name,
+                        types: pokeApi.data.types.map(t => t.type.name),
+                        image: pokeApi.data.sprites.other.home.front_default,
+                        hp: pokeApi.data.stats[0].base_stat,
+                        attack: pokeApi.data.stats[1].base_stat,
+                        defense: pokeApi.data.stats[2].base_stat,
+                        speed: pokeApi.data.stats[5].base_stat,
+                        height: pokeApi.data.height,
+                        weight: pokeApi.data.weight
+                    }
+                ]
+                res.status(200).send(respApi)
+            
+            }
         }
         else {
-            const pokeApi = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
-            let respApi = [
-                {
-                    id: pokeApi.data.id,
-                    name: pokeApi.data.name,
-                    types: pokeApi.data.types.map(t => t.type.name),
-                    image: pokeApi.data.sprites.other.home.front_default,
-                    hp: pokeApi.data.stats[0].base_stat,
-                    attack: pokeApi.data.stats[1].base_stat,
-                    defense: pokeApi.data.stats[2].base_stat,
-                    speed: pokeApi.data.stats[5].base_stat,
-                    height: pokeApi.data.height,
-                    weight: pokeApi.data.weight
-                }
-            ]
-            res.status(200).send(respApi)
-            
+                          
+            try {
+                const allPoke = await getAllPokemon();
+                res.json(allPoke);
+            } 
+            catch (error) {
+                next(error);
+            }
         }
     }
-    else {
-        
-        try {
-            const allPoke = await getAllPokemon();
-            res.send (allPoke);
-        } 
-        catch (error) {
-            next();
-        }
-    }
-}
     catch (error) {
-        res.status(404).send({msg:'Name Pokemon not found'})
+        res.status(404).send({msg:"Pokemon's name not found"})
     }
-      
-    
-    
+  
 });
+
+
 
 //* PARA AGREGAR LOS POKEMON QUE CREO A LA BASE DE DATOS
 router.post('/', async (req, res, next) => {
@@ -228,8 +229,6 @@ router.post('/', async (req, res, next) => {
     }
 })
 
-
-    
 module.exports = router
 
 //*DROP TABLE IF EXISTS nombre; para borrar una tabla que dice que no existe
