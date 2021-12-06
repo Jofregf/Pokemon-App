@@ -20,8 +20,8 @@ const getApiInfo = async () => {
         return {
             id: p.data.id,
             name: p.data.name,
-            types: p.data.types.map(t => t.type.name),
-            image: p.data.sprites.other.home.front_default,
+            types: p.data.types.map(t => t.type),
+            image: p.data.sprites.other.dream_world.front_default,
             hp: p.data.stats[0].base_stat,
             attack: p.data.stats[1].base_stat,
             defense: p.data.stats[2].base_stat,
@@ -40,13 +40,16 @@ const getDbInfo = async () => {
         include: 
             {
                 model: Type,
-                attributes: ['name'],
+                attributes: ['id', 'name',],
                 through: {
                     attributes: [],
                 }
-            }
+            
+        },
+            
+
     })  
-        
+        console.log(dbInfo)
     return dbInfo;
 }
 //* ASOCIO LOS POKEMON DE LA API Y LA DE LA BASE DE DATOS
@@ -57,16 +60,6 @@ const getAllPokemon = async () => {
     return infoTotal;
 
 }
-//* TRAIGO TODOS LOS POKEMON TANTO DE API COMO DE BASE DE DATOS
-// router.get('/', async (req, res, next) => {
-//     try {
-//         const allPoke = await getAllPokemon();
-//         res.send (allPoke);
-//     } 
-//     catch (error) {
-//         next();
-//     }
-// })
 
 //*PARA RELACIONAR LAS TABLAS DE ID POKEMON Y ID DE TYPE
 router.post('/:pokemonId/type/:typeId', async (req, res, next) => {
@@ -93,7 +86,7 @@ router.get('/:id', async (req, res, next) => {
                pokeId = {
                    id: resDb.id,
                    name: resDb.name,
-                   types: resDb.types.map(t => t.name),   
+                   types: resDb.types.map(t => t),   
                    image: resDb.image,
                    hp: resDb.hp,
                    attack: resDb.attack,
@@ -119,8 +112,8 @@ router.get('/:id', async (req, res, next) => {
                 pokeId = {
                     id: resPoke.data.id,
                     name: resPoke.data.name,
-                    types: resPoke.data.types.map(t => t.type.name),
-                    image: resPoke.data.sprites.other.home.front_default,
+                    types: resPoke.data.types.map(t => t.type),
+                    image: resPoke.data.sprites.other.dream_world.front_default,
                     hp: resPoke.data.stats[0].base_stat,
                     attack: resPoke.data.stats[1].base_stat,
                     defense: resPoke.data.stats[2].base_stat,
@@ -156,7 +149,7 @@ router.get('/', async(req,res)=>{
                     return {
                         id: p.id,
                         name: p.name,
-                        types: p.types.map(t => t.name),
+                        types: p.types.map(t => t),
                         image: p.image,
                         hp: p.hp,
                         attack: p.attack,
@@ -174,8 +167,8 @@ router.get('/', async(req,res)=>{
                     {
                         id: pokeApi.data.id,
                         name: pokeApi.data.name,
-                        types: pokeApi.data.types.map(t => t.type.name),
-                        image: pokeApi.data.sprites.other.home.front_default,
+                        types: pokeApi.data.types.map(t => t.type),
+                        image: pokeApi.data.sprites.other.dream_world.front_default,
                         hp: pokeApi.data.stats[0].base_stat,
                         attack: pokeApi.data.stats[1].base_stat,
                         defense: pokeApi.data.stats[2].base_stat,
@@ -210,9 +203,9 @@ router.get('/', async(req,res)=>{
 //* PARA AGREGAR LOS POKEMON QUE CREO A LA BASE DE DATOS
 router.post('/', async (req, res, next) => {
     try {
-        const {name, hp, attack, defense, speed, height, weight, image} = req.body
+        const {name, hp, attack, defense, speed, height, weight, image, type} = req.body
         const newPokemon = await Pokemon.create({
-            name,
+            name: name.toLowerCase(),
             hp,
             attack,
             defense,
@@ -222,6 +215,7 @@ router.post('/', async (req, res, next) => {
             image
           
         })
+        await newPokemon.setTypes(type);
         res.send(newPokemon)
 
     } catch (error) {
