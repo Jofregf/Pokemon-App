@@ -70,26 +70,33 @@ export function getTypes () {
     }
 }
 
-export function createPokemon (payload) {
+// export function createPokemon(pokemon) {
+//     return function (dispatch) {
+//         dispatch({ type: "LOADING", payload: 'Creando Pokémon...' })
+//         return axios.post('http://localhost:3001/pokemon', pokemon)
+//             .then(res => res.data)
+//             .then(data => dispatch({
+//                 type: "CREATE_POKEMON",
+//                 payload: data}))
+//     }
+// }
+
+export function createPokemon(pokemon) {
     return async function (dispatch) {
         try {
-
-            const createPok = await axios.post('http://localhost:3001/pokemon/create', 
-            payload,
-            );
-            dispatch ({
+            dispatch({ type: "LOADING", payload: 'Creando Pokémon...' })
+            const newPokemon = await axios.post('http://localhost:3001/pokemon', pokemon);
+            dispatch({
                 type: "CREATE_POKEMON",
-                payload: createPok
-            
-            }) 
-                
+                payload: newPokemon.data 
+            });
         } 
         catch (error) {
-            console.log(error)
+            console.log(error.message)
         }
-    };
-
+    }
 }
+
 
 export function dbOrApi (payload) {
     return async function (dispatch) {

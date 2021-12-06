@@ -3,6 +3,7 @@ const initialState = {
   allPokemons: [],
   pokeDetails: [],
   types: [],
+  mensaje:"",
   loading: {
     loading: false,
     msg: "",
@@ -51,10 +52,17 @@ function rootReducer(state = initialState, action) {
         types: action.payload,
       };
 
-    case "CREATE_POKEMON":
-      return {
-        ...state,
-      };
+      case "CREATE_POKEMON":
+       // console.log(action.payload, 'soy reducer createpokemon')
+        return {
+          ...state,
+          mensaje: action.payload,
+          loading: {
+            loading: false,
+            msg: ''
+          }
+  
+        }
 
     case "DB_OR_API":
       const allPokes = state.allPokemons;

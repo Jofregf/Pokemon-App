@@ -212,14 +212,16 @@ router.post('/', async (req, res, next) => {
             speed,
             height,
             weight,
-            image
+            image,
+            type
           
         })
+
         await newPokemon.setTypes(type);
         res.send(newPokemon)
 
     } catch (error) {
-        next(error)
+        res.send(error.message)
     }
 })
 

@@ -185,7 +185,7 @@ export default function Home () {
                      arrayPokemon?.map ((poke) => {
                         return (
                         <Link to={"/home/" + poke.id}>
-                       <Card name={poke.name} image={poke.image? poke.image : <img src='../Image/PokeDefault.png'/>} type={poke.types} />
+                       <Card name={poke.name} image={poke.image} type={poke.types} />
                         </Link>
                         )
                     
