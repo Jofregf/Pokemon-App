@@ -2,20 +2,15 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
-    /*background-image : url("https://www.teahub.io/photos/full/8-84916_fondos-de-pantalla-pokemon.jpg");*/
+    background-image : url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.wallpapersden.com%2Fimage%2Fdownload%2Fghost-pokemon_bGVlbWWUmZqaraWkpJRobWllrWdma2U.jpg&f=1&nofb=1");
     background-size: cover;
     background-attachment: fixed;
-    
+    display: flex;
+    justify-content: center;
+    flex-direction: center;
+    align-items: center;
 }
 
-.landing {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      
-}
 
   
 .logo {
@@ -49,7 +44,7 @@ body {
     position: relative;
 }
 
-.pokeball::before, .btn, .btn::before {
+.pokeball::before, .btn-pokeball, .btn-pokeball::before {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -61,6 +56,8 @@ body {
     width: 24.3em;
     background: #111;
     height: 6em;
+    border-radius: 35px;
+    
 }
 
 .pokeball::after {
@@ -75,7 +72,7 @@ body {
     transform: rotate(-45deg);
 }
 
-.btn {
+.btn-pokeball {
   background: #fff;
   width: 7.5em;
   height: 7.5em;
@@ -84,11 +81,14 @@ body {
   transition: .5s;
 }
 
-.btn:hover {
-    padding: 5px;
+.btn-pokeball:hover {
+    border:7 px;
+    background: #fb0d3e;
+    border-color: #ffea00;
+ 
 }
 
-.btn::before {
+.btn-pokeball::before {
     content: '';
     width: 5em;
     height: 5em;

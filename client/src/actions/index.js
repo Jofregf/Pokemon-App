@@ -18,7 +18,9 @@ export function getPokemons () {
 
 }
 // export function getPokemons() {
+
 //     return function (dispatch) {
+
 //         dispatch({ type: "LOADING", payload: 'Buscando Pokémons...' })
 //         return axios.get('http://localhost:3001/pokemon')
 //             .then(res => res.data)

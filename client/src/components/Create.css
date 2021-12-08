@@ -1,0 +1,66 @@
+.title-form {
+  color: #ef233c;
+  font-size: 40px;
+  font-style: italic;
+  text-transform: capitalize;
+
+}
+
+.detalles-home {
+    text-decoration: none;
+}
+
+.bt-forback {
+    margin-top: 10px;
+    font-size: 20px;
+    background-color: #cfbaf0;
+    border-radius: 5px;
+    width: 100px;
+}
+/*
+.form-container {
+
+}
+
+.name-form {
+
+}
+
+.hp-form {
+
+}
+
+.att-form {
+
+}
+
+.def-form {
+
+}
+
+.spe-form {
+
+}
+
+.hei-form {
+
+}
+
+.wei-form {
+
+}
+
+.img-form {
+
+}
+
+.type-form {
+
+} */
+
+.btn-form {
+    font-size: 18px;
+    background-color: #ff6d00;
+    border-radius: 12px;
+    width: 100px;
+}

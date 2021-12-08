@@ -1,23 +1,53 @@
 .card-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  padding: 10px 80px 50px;
-  grid-gap: 30px 30px;
-  justify-content: center;
-  @media (max-width: 900px) {
-    & {
-      padding-bottom: 10px;
-    }
-  }
+  padding: 7px;
+  width: 370px;
+  height: 400px;
+  margin: 28px;
+  transition: border .5s;
+  cursor: pointer;
+  background: #ffffffd3;
+  transition: all .2s;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 16px 16px 4px #111;
 
 }
+
+.card-container:hover {
+  box-shadow: 2px 8px 10px rgba(0, 0, 0, 0.5);
+  transform: translate(-1px, -6px);
+  transition: transform 0.2s ease;
+  will-change: transform;
+  user-select: none;
+  cursor: pointer;
+}
+
+.card-body {
+  height: 60px;
+  margin-top: 0px !important;
+  padding-top: 0px !important;
   
-  .card-name {
-    margin-bottom: 15px;
-  }
-   
-  .card-body {
-    margin-top: 0px !important;
-    padding-top: 0px !important;
-  }
+}
+
+.pokemon-image {
+  height: 150px;
+}
+
+
+.pokemon-name {
+  font-size: 30px;
+  font-style: italic;
+  color: black;
+  text-transform: capitalize;
+}
+
+.pokemon-type {
+  color: black;
+  text-transform: capitalize;
   
+}
+
+.pokemon-tipe:hover {
+  
+  text-shadow: 2px 2px 40px rgba(0, 0, 0, 0.7);
+}

@@ -1,9 +1,9 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import {Link, useNavigate} from 'react-router-dom';
-import {createPokemon, getTypes} from '../actions/index';
+import {createPokemon, getTypes, } from '../actions/index';
 import { useDispatch, useSelector } from 'react-redux';
-
+import './Create.css';
 
 function validate(input) {
     let errors = {};
@@ -104,6 +104,7 @@ function validate(input) {
               type: []
           });
           navigate('/home');
+          
   
       }
   
@@ -115,14 +116,16 @@ function validate(input) {
       return (
           <div>
               <div>
-                  <Link to='/home'>Back</Link>
+                  <Link to='/home'>
+                  <botton className='bt-forback'>Back</botton>
+                  </Link>
               </div>
               <div>
-              <h1>Create your Pokemon</h1>
+              <h1 className='title-form'>Create your Pokemon</h1>
               </div>
               <div>
-              <form onSubmit = {(event) => handleSubmit(event)}>
-                  <div>
+              <form className='form-container'onSubmit = {(event) => handleSubmit(event)}>
+                  <div className='name-form'>
                       <label>Name</label>
                       <input
                       type="text"
@@ -132,7 +135,7 @@ function validate(input) {
                       />
                       {errors.name && <p>{errors.name}</p>}
                   </div>
-                  <div>
+                  <div className='hp-form'>
                       <label>HP</label>
                       <input
                       type="number"
@@ -142,7 +145,7 @@ function validate(input) {
                       />
                       {errors.hp && <p>{errors.hp}</p>}
                   </div>
-                  <div>
+                  <div className='att-form'>
                       <label>Attack</label>
                       <input
                       type="number"
@@ -152,7 +155,7 @@ function validate(input) {
                       />
                       {errors.attack && <p>{errors.attack}</p>}
                   </div>
-                  <div>
+                  <div className='def-form'>
                       <label>Defense</label>
                       <input
                       type="number"
@@ -162,7 +165,7 @@ function validate(input) {
                       />
                       {errors.defense && <p>{errors.defense}</p>}
                   </div>
-                  <div>
+                  <div className='spe-form'>
                       <label>Speed</label>
                       <input
                       type="number"
@@ -172,7 +175,7 @@ function validate(input) {
                       />
                       {errors.speed && <p>{errors.speed}</p>}
                   </div>
-                  <div>
+                  <div className='hei-form'>
                       <label>Height</label>
                       <input
                       type="number"
@@ -182,7 +185,7 @@ function validate(input) {
                       />
                       {errors.height && <p>{errors.height}</p>}
                   </div>
-                  <div>
+                  <div className='wei-form'>
                       <label>Weight</label>
                       <input
                       type="number"
@@ -192,7 +195,7 @@ function validate(input) {
                       />
                       {errors.weight && <p>{errors.weight}</p>}
                   </div>
-                  <div>
+                  <div className='img-form'>
                       <label>Image</label>
                       <input
                       type="url"
@@ -201,8 +204,8 @@ function validate(input) {
                       onChange={(event) => handleChange(event)}
                       />
                   </div>
-                  <div>
-                      
+                  <div className='type-form'>
+                      <label>Type</label>
                      {types.map((t) => (
                          <div className="checkbox-types">
                              <div className='check'>
@@ -215,7 +218,7 @@ function validate(input) {
                       
                   </div>
                   <div>
-                      <button type="submit">Create</button>
+                      <button className='btn-form' type="submit">Create</button>
                   </div>
   
   

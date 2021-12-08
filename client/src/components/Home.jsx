@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import { getPokemons,getByName,  dbOrApi, filterByTypes, order, getTypes} from '../actions';
 import { Link } from 'react-router-dom';
 import Card from './Card';
+import './Home.css'
 
 
 
@@ -61,16 +62,14 @@ export default function Home () {
                 prox = prox + 9;
                 return allPoke.slice(currentPage, currentPage + 9);
             }
-            if(allPoke.info) return allPoke;
-            return [];
+            
         }   
         if(currentPage >= 9) {
             
             if(allPoke.length) {
                 return allPoke.slice(currentPage, currentPage + 12);
             }
-            if(allPoke.info) return allPoke;
-            return [];
+            
         }
     }
     
@@ -132,7 +131,7 @@ export default function Home () {
             <div className="container">
                 <input id="formulario" value={name}
                 type="text"
-                placeholder="Buscar pokemon..."           
+                placeholder="Search pokemon..."           
                 onChange={e => {handleInputChange(e)}}            
                 />
                 <button type="submit" onClick={e => {handleSubmit(e)}}>Buscar</button>
@@ -168,30 +167,42 @@ export default function Home () {
                     })}
                 </select>
                
-                <div>   
-                    <button onClick = {prevPage}>Prev</button>
-                    <button onClick = {nextPage}>Next</button>
-                </div>
-
+               
                 <div>
                     <Link to= '/pokemon'></Link>
-                    <button onClick={event => {handleClick(event)}}>Reload</button>
+                    <button className= 'button-reload'onClick={event => {handleClick(event)}}>Reload</button>
                 </div>
 
                 
                 <div className="card">
                 
-                {loading.loading ? <h1>Loading...</h1> :
+                {loading.loading ? 
+                <div className='loader-fader'>
+                <div className='loader-container'>
+                    <div className="loader"></div>
+                    <div className="loadertwo"></div>
+                    <div className="loaderthree"></div>
+                </div>
+                </div> :
                      arrayPokemon?.map ((poke) => {
                         return (
-                        <Link to={"/home/" + poke.id}>
+                        <Link className='detalles-home' to={"/home/" + poke.id}>
                        <Card name={poke.name} image={poke.image} type={poke.types} />
                         </Link>
                         )
                     
-                })}
+                })
+                
+                }
                 
                 </div>
+                <div>   
+                    <button className='button-pagination' onClick = {prevPage}>Prev</button>
+                    <button className='button-pagination' onClick = {nextPage}>Next</button>
+                </div>
+
+            
+            
                 {/*console.log(allPoke)*/}
                 
             </div>

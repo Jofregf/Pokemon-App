@@ -20,3 +20,5 @@ describe('Pokemon model', () => {
     });
   });
 });
+
+

@@ -49,7 +49,7 @@ const getDbInfo = async () => {
             
 
     })  
-        console.log(dbInfo)
+        //console.log(dbInfo)
     return dbInfo;
 }
 //* ASOCIO LOS POKEMON DE LA API Y LA DE LA BASE DE DATOS
