@@ -61,14 +61,16 @@ export default function Home () {
             if (allPoke.length) {
                 prox = prox + 9;
                 return allPoke.slice(currentPage, currentPage + 9);
-            }
-            
+            }if (allPoke.info)
+                return []
         }   
         if(currentPage >= 9) {
             
             if(allPoke.length) {
                 return allPoke.slice(currentPage, currentPage + 12);
             }
+            if(allPoke.info)
+                return []
             
         }
     }
@@ -145,23 +147,26 @@ export default function Home () {
                         
             <div>
                 <select onChange={event => handleDbOrApi(event)}>
+                    <option>Created by</option>
                     <option value='all'>All</option>
                     <option value='created'>Created</option>
                     <option value='api'>Api</option>
                 </select>
                 
                 <select onChange={event => handleOrder(event)}>
+                    <option>Order by Alpha</option>
                     <option value='asc'>A-Z</option> //* el value permite que se acceda y pregunte que haga algo
                     <option value='desc'>Z-A</option>
                 </select>
                 
                 <select onChange={event => handleOrder(event)}>
+                    <option>Order by Attack</option>
                     <option value='att-asc'>Weak</option> 
                     <option value='att-desc'>Strong</option>
                 </select>
                 
                 <select onChange= {event => handleFilterType(event)}>
-                    <option>All</option>
+                    <option>Order by</option>
                     {types && types.map((type, index) => {
                         return <option key={index} value={type.name}>{type.name}</option>
                     })}

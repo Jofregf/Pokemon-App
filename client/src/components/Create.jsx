@@ -104,7 +104,7 @@ function validate(input) {
               type: []
           });
           navigate('/home');
-          
+        
   
       }
   
@@ -114,17 +114,19 @@ function validate(input) {
       }, []);
       
       return (
-          <div>
+          <div className='encierra'>
               <div>
-                  <Link to='/home'>
-                  <botton className='bt-forback'>Back</botton>
+                  <Link className='borrar' to='/home'>
+                  <botton className='botonformu'>Back</botton>
                   </Link>
               </div>
               <div>
               <h1 className='title-form'>Create your Pokemon</h1>
               </div>
-              <div>
-              <form className='form-container'onSubmit = {(event) => handleSubmit(event)}>
+              
+                  <div className='form-container'>
+              <form onSubmit = {(event) => handleSubmit(event)}>
+                    <div className='llenar'>
                   <div className='name-form'>
                       <label>Name</label>
                       <input
@@ -204,8 +206,10 @@ function validate(input) {
                       onChange={(event) => handleChange(event)}
                       />
                   </div>
+                  </div>
+                  <div className='chekes'>
                   <div className='type-form'>
-                      <label>Type</label>
+                      <label></label>
                      {types.map((t) => (
                          <div className="checkbox-types">
                              <div className='check'>
@@ -220,12 +224,13 @@ function validate(input) {
                   <div>
                       <button className='btn-form' type="submit">Create</button>
                   </div>
-  
+                    </div>
   
   
                  
               </form>
               </div>
+              
   
               {/*console.log(input, 'desde pokemoncreate')*/}
           </div>
