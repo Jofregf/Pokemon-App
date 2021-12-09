@@ -3,14 +3,13 @@
   width: 370px;
   height: 400px;
   margin: 28px;
-  transition: border .5s;
+  transition: border 0.5s;
   cursor: pointer;
   background: #ffffffd3;
-  transition: all .2s;
+  transition: all 0.2s;
   border: none;
   border-radius: 15px;
   box-shadow: 16px 16px 4px #111;
-
 }
 
 .card-container:hover {
@@ -26,13 +25,11 @@
   height: 60px;
   margin-top: 0px !important;
   padding-top: 0px !important;
-  
 }
 
 .pokemon-image {
   height: 150px;
 }
-
 
 .pokemon-name {
   font-size: 30px;
@@ -44,10 +41,8 @@
 .pokemon-type {
   color: black;
   text-transform: capitalize;
-  
 }
 
 .pokemon-tipe:hover {
-  
   text-shadow: 2px 2px 40px rgba(0, 0, 0, 0.7);
 }

@@ -11,8 +11,8 @@ function App() {
   return (
     <BrowserRouter>
     <div className="App">
-      <Routes> //* matchea solo los link usados 
-        <Route exact path="/" element={<Landing/>}/>
+      <Routes> {/* matchea solo los link usados */}
+        <Route path="/" element={<Landing/>}/>
         <Route path="/home" element={<Home/>}/>
         <Route path="/card" element={<Card/>}/>
         <Route path="/create" element={<Create/>}/>

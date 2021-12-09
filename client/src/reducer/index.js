@@ -79,9 +79,9 @@ function rootReducer(state = initialState, action) {
       const allPoke = state.allPokemons;
       //console.log(allPoke)
       const filteredByTypes =
-        allPoke.filter((poke) => poke.types.find(t => {
+        allPoke.filter((poke) => poke.types.find((t) => {
             if (t.name === action.payload) {
-              console.log(poke, '2')
+              //console.log(poke, '2')
               return poke
             } 
         }));

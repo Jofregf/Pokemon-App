@@ -3,151 +3,83 @@
   font-size: 40px;
   font-style: italic;
   text-transform: capitalize;
-
 }
 
 /* .encierra {
     
 } */
 .borrar {
-    text-decoration: none;
+  text-decoration: none;
 }
 
-
 .detalles-home {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .botonformu {
-    display: block;
-    right: 150px;
-    font-size: 20px;
-    background-color: #cfbaf0;
-    border-radius: 5px;
-    width: 30%;
+  display: block;
+  right: 150px;
+  font-size: 20px;
+  background-color: #cfbaf0;
+  border-radius: 5px;
+  width: 30%;
 }
 
 .form-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
+  display: grid;
+  grid-template-row: repeat(2, 1fr);
 }
- 
 
 .llenar {
-    text-align: center;
+  text-align: center;
 }
 
+.input-buscar {
+  flex: 1;
+  padding: 10px;
+  border-radius: 1rem;
+  color: rgb(248, 100, 46);
+  margin: 0;
 
-.name-form {
-    font-size: 15px;
-    color: #fbf8cc;
-    text-transform: capitalize;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    bottom: 3px;
+  border: 1px solid #e5e5e5;
 }
 
-
-
-.hp-form {
-    font-size: 15px;
-    color: #fbf8cc;
-    text-transform: capitalize;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    bottom: 3px;
+.campo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
 }
 
-
-.att-form {
-    font-size: 15px;
-    color: #fbf8cc;
-    text-transform: capitalize;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    bottom: 3px;
+.label {
+  flex: 0 0 100px;
+  text-align: left;
 }
 
-
-.def-form {
-    font-size: 15px;
-    color: #fbf8cc;
-    text-transform: capitalize;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    bottom: 3px;
-}
-
-
-.spe-form {
-    font-size: 15px;
-    color: #fbf8cc;
-    text-transform: capitalize;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    bottom: 3px;
-}
-
-
-.hei-form {
-    font-size: 15px;
-    color: #fbf8cc;
-    text-transform: capitalize;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    bottom: 3px;
-}
-
-
-.wei-form {
-    font-size: 15px;
-    color: #fbf8cc;
-    text-transform: capitalize;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    bottom: 3px;
+.chekes {
+  width: 75%;
+  display: block;
+  margin: 0 auto;
 }
 
 .type-form {
-    display: flex;
-    font-size: 15px;
-    color: #fbf8cc;
-    text-transform: capitalize;
-    width: 500px;
-    height: 200px;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: space-around;
-    justify-content: center;
-    align-items: center;
-   
-} 
-
-.img-form {
-   
-    font-size: 15px;
-    color: #fbf8cc;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    bottom: 3px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 
+.checkbox-types {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 400;
+  font-size: 15px;
+  text-transform: uppercase;
+}
 
-
-.btn-form {
-    font-size: 18px;
-    background-color: #ff6d00;
-    border-radius: 12px;
-    width: 100px;
+.boton-mandar {
+  font-size: 18px;
+  background-color: #ff6d00;
+  border-radius: 12px;
+  width: 100px;
+  /* display: block; */
+  margin-top: 330px;
+  margin: 0 auto;
 }
