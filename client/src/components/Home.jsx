@@ -41,7 +41,7 @@ export default function Home() {
     event.preventDefault();
     setName(event.target.value.toLowerCase());
     setCurrentPage(0);
-    console.log(name);
+    //console.log(name);
   }
 
   function handleSubmit(event) {
@@ -191,7 +191,7 @@ export default function Home() {
               handleClick(event);
             }}
           >
-            Reload
+            Refresh
           </button>
         </div>
 

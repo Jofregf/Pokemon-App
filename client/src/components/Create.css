@@ -5,9 +5,11 @@
   text-transform: capitalize;
 }
 
-/* .encierra {
-    
-} */
+.errores {
+  color: #f0c808; 
+  font-size: 20px;
+}
+
 .borrar {
   text-decoration: none;
 }
@@ -27,7 +29,7 @@
 
 .form-container {
   display: grid;
-  grid-template-row: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
 }
 
 .llenar {
@@ -56,7 +58,7 @@
 }
 
 .chekes {
-  width: 75%;
+  width: 90%;
   display: block;
   margin: 0 auto;
 }

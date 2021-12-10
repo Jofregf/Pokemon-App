@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { createPokemon, getTypes } from "../actions/index";
+import { createPokemon, getTypes} from "../actions/index";
 import { useDispatch, useSelector } from "react-redux";
 import "./Create.css";
 
@@ -75,7 +75,7 @@ export default function Create() {
         [event.target.name]: event.target.value,
       })
     );
-    console.log(input, "desde handlechange22222");
+    //console.log(input, "desde handlechange22222");
   }
 
   function handleSubmit(event) {
@@ -94,7 +94,7 @@ export default function Create() {
       image: "",
       type: [],
     });
-    navigate("/home");
+    navigate('/home')
   }
 
   useEffect(() => {
@@ -124,7 +124,7 @@ export default function Create() {
                 name="name"
                 onChange={(event) => handleChange(event)}
               />
-              {errors.name && <p>{errors.name}</p>}
+              {errors.name && <p className= 'errores'>{errors.name}</p>}
             </div>
             <div className="campo">
               <label className="label">HP</label>
@@ -135,7 +135,7 @@ export default function Create() {
                 name="hp"
                 onChange={(event) => handleChange(event)}
               />
-              {errors.hp && <p>{errors.hp}</p>}
+              {errors.hp && <p className= 'errores'>{errors.hp}</p>}
             </div>
             <div className="campo">
               <label className="label">Attack</label>
@@ -146,7 +146,7 @@ export default function Create() {
                 name="attack"
                 onChange={(event) => handleChange(event)}
               />
-              {errors.attack && <p>{errors.attack}</p>}
+              {errors.attack && <p className= 'errores'>{errors.attack}</p>}
             </div>
             <div className="campo">
               <label className="label">Defense</label>
@@ -157,7 +157,7 @@ export default function Create() {
                 name="defense"
                 onChange={(event) => handleChange(event)}
               />
-              {errors.defense && <p>{errors.defense}</p>}
+              {errors.defense && <p className= 'errores'>{errors.defense}</p>}
             </div>
             <div className="campo">
               <label className="label">Speed</label>
@@ -168,7 +168,7 @@ export default function Create() {
                 name="speed"
                 onChange={(event) => handleChange(event)}
               />
-              {errors.speed && <p>{errors.speed}</p>}
+              {errors.speed && <p className= 'errores'>{errors.speed}</p>}
             </div>
             <div className="campo">
               <label className="label">Height</label>
@@ -179,7 +179,7 @@ export default function Create() {
                 name="height"
                 onChange={(event) => handleChange(event)}
               />
-              {errors.height && <p>{errors.height}</p>}
+              {errors.height && <p className= 'errores'>{errors.height}</p>}
             </div>
             <div className="campo">
               <label className="label">Weight</label>
@@ -190,7 +190,7 @@ export default function Create() {
                 name="weight"
                 onChange={(event) => handleChange(event)}
               />
-              {errors.weight && <p>{errors.weight}</p>}
+              {errors.weight && <p className= 'errores'>{errors.weight}</p>}
             </div>
             <div className="campo">
               <label className="label">Image</label>
