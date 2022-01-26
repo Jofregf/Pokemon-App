@@ -20,6 +20,7 @@ export default function Details() {
 
   const myDeta = useSelector((state) => state.pokeDetails);
   console.log(myDeta);
+  
 
   return (
     <div className="detail-container">
@@ -49,12 +50,13 @@ export default function Details() {
               <div>
                 {Array.isArray(myDeta.types) ? (
                   myDeta.types.map((t) => (
-                    <h3 className="type-list">{t.name} </h3>
+                    <h3 key={t.id} className="type-list">{t.name} </h3>
                   ))
                 ) : (
                   <h1 className="type-list">Sin Tipos</h1>
                 )}
               </div>
+             
             </div>
           </div>
           <div>

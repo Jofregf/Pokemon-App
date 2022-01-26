@@ -26,6 +26,7 @@ export default function Home() {
     if (!allPoke.length && !loading.loading) {
       dispatch(getPokemons());
       dispatch(getTypes());
+      
     }
   }, [dispatch, allPoke, loading]);
 
@@ -121,7 +122,7 @@ export default function Home() {
     setCurrentPage(0); // al hacer el ordenamiento que se setee en la primera pagina
     setOrden(`Ordenar por: ${event.target.value}`); //para cdo setea la pagina, modifique el estado local y se renderice ordenado de tal forma
   }
-
+  
   return (
     <div>
       <div className="container">
@@ -207,13 +208,14 @@ export default function Home() {
           ) : (
             arrayPokemon?.map((poke) => {
               return (
-                <Link className="detalles-home" to={"/home/" + poke.id}>
+                <Link key={poke.id} className="detalles-home" to={"/home/" + poke.id}>
                   <Card name={poke.name} image={poke.image} type={poke.types} />
                 </Link>
               );
             })
           )}
         </div>
+        
         <div>
           <button className="button-pagination" onClick={prevPage}>
             Prev

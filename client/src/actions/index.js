@@ -17,16 +17,6 @@ export function getPokemons () {
     }
 
 }
-// export function getPokemons() {
-
-//     return function (dispatch) {
-
-//         dispatch({ type: "LOADING", payload: 'Buscando Pokémons...' })
-//         return axios.get('http://localhost:3001/pokemon')
-//             .then(res => res.data)
-//             .then(data => dispatch({ type: "GET_POKEMONS", payload: data }))
-//     }
-// }
 
 export function getByName (payload) {
     return async function (dispatch) {
@@ -43,7 +33,7 @@ export function getByName (payload) {
 }
 
 export function getDetails (id) {
-    console.log(id, 'desde action')
+   
     return async function (dispatch) {
         try {
             const pokeDetails = await axios.get('http://localhost:3001/pokemon/' + id);
@@ -72,16 +62,7 @@ export function getTypes () {
     }
 }
 
-// export function createPokemon(pokemon) {
-//     return function (dispatch) {
-//         dispatch({ type: "LOADING", payload: 'Creando Pokémon...' })
-//         return axios.post('http://localhost:3001/pokemon', pokemon)
-//             .then(res => res.data)
-//             .then(data => dispatch({
-//                 type: "CREATE_POKEMON",
-//                 payload: data}))
-//     }
-// }
+
 
 export function createPokemon(pokemon) {
     return async function (dispatch) {
@@ -141,5 +122,19 @@ export function order(payload) {
         catch (error) {
             console.log(error)
         }    
+    }
+}
+
+export function filterSpeed(payload) {
+    return async function (dispatch) {
+        try {
+            dispatch ({
+                type: 'FILTER_SPEED',
+                payload
+            })
+        }
+        catch (error) {
+        console.log(error)
+        }
     }
 }

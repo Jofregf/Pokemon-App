@@ -7,13 +7,13 @@ export default function Landing() {
   return (
     <div className="landing">
       <img className="logo" src={LogoPokemon} alt="logo" />
-      {/*<div className="landing-text">
+      {/*<div classNameName="landing-text">
                 <h1>Welcome to the world of Pokemon</h1>
             </div>*/}
-      <div class="container-pokeball">
-        <div class="pokeball">
+      <div className="container-pokeball">
+        <div className="pokeball">
           <Link to="/home">
-            <div class="btn-pokeball"> </div>
+            <div className="btn-pokeball"> </div>
           </Link>
         </div>
       </div>

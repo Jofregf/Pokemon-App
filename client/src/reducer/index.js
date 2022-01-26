@@ -39,7 +39,7 @@ function rootReducer(state = initialState, action) {
       };
     
     case "GET_DETAILS":
-      console.log('desde reduce detail')
+      // console.log('desde reduce detail')
       return {
         ...state,
         pokeDetails: action.payload,
@@ -79,6 +79,7 @@ function rootReducer(state = initialState, action) {
       const allPoke = state.allPokemons;
       //console.log(allPoke)
       const filteredByTypes =
+        // eslint-disable-next-line array-callback-return
         allPoke.filter((poke) => poke.types.find((t) => {
             if (t.name === action.payload) {
               //console.log(poke, '2')
@@ -106,7 +107,7 @@ function rootReducer(state = initialState, action) {
         });
       }
       if (action.payload === "desc") {
-        console.log(action.payload)
+        
         orderPoke = state.pokemons.sort(function (a, b) {
           if (a.name.toLowerCase() > b.name.toLowerCase()) {
             return -1;

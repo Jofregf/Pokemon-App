@@ -105,7 +105,7 @@ export default function Create() {
     <div className="encierra">
       <div>
         <Link className="borrar" to="/home">
-          <botton className="botonformu">Back</botton>
+          <button className="botonformu">Back</button>
         </Link>
       </div>
       <div>
@@ -206,9 +206,10 @@ export default function Create() {
           <div className="chekes">
             <div className="type-form">
               {types.map((t) => (
-                <div className="checkbox-types">
+                <div key={t.id}className="checkbox-types">
                   <div className="check">
                     <input
+                      
                       type="checkbox"
                       value={t.id}
                       onChange={(event) => handleType(event)}
